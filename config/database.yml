@@ -79,7 +79,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: rails-app-engine-lab_production
-  username: rails-app-engine-lab
-  password: <%= ENV['RAILS-APP-ENGINE-LAB_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  host: <%= ENV.fetch("PG_HOST") %>
+  username: <%= ENV.fetch("PG_USER") %>
+  password: <%= ENV.fetch("PG_PASS") %>
+  database: "rails-app-engine-lab_production"
